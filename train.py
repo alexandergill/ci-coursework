@@ -1,10 +1,14 @@
+# train.py
+# train a model on the data contained in 'data/training.mat'
+
+# import everything we need
 import tensorflow as tf
 from tensorflow import keras
-from preprocess import preprocessLabeled as pp
+from preprocess import preprocessLabeled as ppl
 import numpy as np
 
 # extract and process spikes from training data
-spikes_train = pp('data/training.mat')
+spikes_train = ppl('data/training.mat')
 
 # save waveforms to N x 70 matrix, such that each row
 # is one waveform

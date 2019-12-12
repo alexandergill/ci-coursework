@@ -11,14 +11,18 @@ class Spike:
     border = 35
 
     def __init__(self):
+        # 70-long list of waveform samples
         self.waveform = None
+        # classification of the spike
         self.type     = None
+        # position of the index within the window
         self.position = None
+        # position of the spike within the whole sample
         self.centre   = None
 
 # function to bandpass filter the waveform
 def bandpass(d):
-    # create filter with cutoff frequencies 5 & 5 000
+    # create filter with cutoff frequencies 5 & 5,000
     sos = signal.butter(2, [5, 5000], 'bp', fs=25000, output='sos')
     
     # apply filter and return
@@ -37,7 +41,8 @@ def preprocessLabeled(filepath):
     indices = mat['Index']
     classification = mat['Class']
 
-    waveform = d
+    # apply bandpass filter to the waveform
+    waveform = bandpass(d)
 
     # detect peaks in the waveform
     peaks, _ = signal.find_peaks(
@@ -116,6 +121,8 @@ def preprocessUnlabeled(filepath):
             (-1.5, 12.5), # normalise from these values 
             (0, 1)        # to these values
         )
+        # save the position of the spike
+        spike.centre = peak
 
         # check that the waveform is the right length
         # it can be the wrong length if the spike is too close
