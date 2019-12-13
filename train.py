@@ -25,16 +25,24 @@ labels_train = np.array([
     for s in spikes_train # for each spike
 ])
 
+# create neural network object
 model = keras.models.Sequential([
+    # input layer
     tf.keras.layers.Dense(70, activation='relu'),
+    # hidden layer
     tf.keras.layers.Dense(128, activation='relu'),
+    # create drouput to avoid over-fitting
     tf.keras.layers.Dropout(0.2),
+    # output layer
     tf.keras.layers.Dense(4, activation='softmax')
 ])
+# compile model
 model.compile(optimizer='adam',
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 
+# train model on training data
 model.fit(data_train, labels_train, epochs=50)
 
+# save trained model to file
 model.save('model.h5')

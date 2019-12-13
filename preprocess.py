@@ -48,11 +48,12 @@ def preprocessLabeled(filepath):
     peaks, _ = signal.find_peaks(
         waveform,
         height=2,
-        distance=5,prominence=1
+        distance=5,
+        prominence=1
     )
 
     # loop over peaks
-    for peak in tqdm(
+    for peak in tqdm( # tqdm creates progess bar object
         peaks,
         desc='creating preprocessed dataset from %s' % filepath
     ):

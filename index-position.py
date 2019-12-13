@@ -19,4 +19,6 @@ for spike in spikes:
 
 # plot histogram
 plt.plot(offsets, tally)
+plt.xlabel('offset')
+plt.ylabel('frequency')
 plt.show()
