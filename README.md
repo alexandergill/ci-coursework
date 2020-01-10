@@ -1,6 +1,13 @@
 # Classification of Neural Recordings
 Neural network to classify spikes in a neural recording from bipolar electrodes.
 
+Here's the feedback I got for this coursework:
+
+> Classifier Performance Mark: 89%  
+> Report: 68%  
+> Code Quality: 60%  
+> Total: 74%
+
 Follow the instructions below to use the repository.
 
 Written for Python 3.7.5
